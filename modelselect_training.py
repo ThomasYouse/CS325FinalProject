@@ -11,8 +11,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_absolute_error
 
 
-np.random.seed(42)
-
 """
 Cody Smith
 Model Selection and Training 
@@ -23,7 +21,7 @@ April 10th, 2026
 this code WILL need alterations once all data cleaning and preprocessing is done
 
 cleaned data file read in:
-    df = pd.read_csv('train_cleaned.csv')
+    df = pd.read_csv('(cleaned_data_file.csv')
 
 Other alterations:
     Feature importance handoff will need to be integrated into final complete code 
@@ -40,20 +38,22 @@ the best Random Forest configuration before next steps.
 Assuming the data is cleaned, the df with a Z-score is NOT yet applied 
 """
 
+np.random.seed(42)
+
 X = df.drop(columns=['finishing_time'])
 y = df['finishing_time'].values
 
 " 80/20 split "
 X_train, X_val, y_train, y_val = train_test_split(
         X, y, test_size=0.2, random_state=42
-        )
+)
 
 " StandardScaler, fit to the training data only "
 scaler         = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_val_scaled   = scaler.transform(X_val)
 
-" Model 1 (LinearRegression) "
+" Model 1 (Linear Regression) "
 lr_model = LinearRegression()
 lr_model.fit(X_train_scaled, y_train)
 
@@ -82,7 +82,7 @@ comparison_df = pd.DataFrame({
     'Model': ['Linear Regression', 'Random Forest (100 trees)'],
     'Train MAE (min)': [train_mae_lr, train_mae_rf],
     'Val MAE (min)':   [val_mae_lr,   val_mae_rf]
-    })
+})
 
 print("\n" + "="*55)
 print("MODEL COMPARISON")
