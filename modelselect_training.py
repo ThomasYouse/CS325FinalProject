@@ -13,6 +13,12 @@ from sklearn.metrics import mean_absolute_error
 
 np.random.seed(42)
 
+"""
+Cody Smith
+Model Selection and Training 
+April 10th, 2026
+"""
+
 """ 
 Assuming the data is cleaned, the df with a Z-score is NOT yet applied 
 df = pd.read_csv('train_cleaned.csv')
@@ -24,7 +30,7 @@ y = df['finishing_time'].values
 " 80/20 split "
 X_train, X_val, y_train, y_val = train_test_split(
         X, y, test_size=0.2, random_state=42
-)
+        )
 
 " StandardScaler, fit to the training data only "
 scaler         = StandardScaler()
@@ -60,7 +66,7 @@ comparison_df = pd.DataFrame({
     'Model': ['Linear Regression', 'Random Forest (100 trees)'],
     'Train MAE (min)': [train_mae_lr, train_mae_rf],
     'Val MAE (min)':   [val_mae_lr,   val_mae_rf]
-})
+    })
 
 print("\n" + "="*55)
 print("MODEL COMPARISON")
