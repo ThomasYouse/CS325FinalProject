@@ -20,8 +20,24 @@ April 10th, 2026
 """
 
 """ 
+this code WILL need alterations once all data cleaning and preprocessing is done
+
+cleaned data file read in:
+    df = pd.read_csv('train_cleaned.csv')
+
+Other alterations:
+    Feature importance handoff will need to be integrated into final complete code 
+
+Save trained models with:
+    joblib.dump(lr_model, 'lr_model.pk1')
+    (James can then load directly for final eval with no retraining)
+
+n_estimators and max_depth can be done in a loop (like HW2) to find
+the best Random Forest configuration before next steps.
+"""
+
+""" 
 Assuming the data is cleaned, the df with a Z-score is NOT yet applied 
-df = pd.read_csv('train_cleaned.csv')
 """
 
 X = df.drop(columns=['finishing_time'])
